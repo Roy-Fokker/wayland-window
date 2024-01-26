@@ -1,5 +1,9 @@
 # find vcpkg installed library
 find_package(fmt CONFIG REQUIRED)
+find_package(PkgConfig REQUIRED) 
+
+pkg_check_modules(wayland-client++ REQUIRED wayland-client++)
+pkg_check_modules(wayland-client-extra++ REQUIRED wayland-client-extra++)
 
 set(PRJ_EXE_NAME "cpp23-application")
 
@@ -18,6 +22,12 @@ target_compile_definitions(${PRJ_EXE_NAME}
 		WIN32_LEAN_AND_MEAN
 )
 
+# precompiled header for this application
+target_precompile_headers(${PRJ_EXE_NAME}
+	PRIVATE
+		<cstdint>
+)
+
 # source files for this application
 target_sources(${PRJ_EXE_NAME}
 	PRIVATE
@@ -26,4 +36,6 @@ target_sources(${PRJ_EXE_NAME}
 # libraries used by this application
 target_link_libraries(${PRJ_EXE_NAME}
 	PRIVATE
-		fmt::fmt)
+		fmt::fmt
+		wayland-client++
+		wayland-client-extra++)
