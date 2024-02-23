@@ -1,15 +1,9 @@
 cmake_minimum_required(VERSION 3.28)
 
-# Enable policy to make vcpkg copy dll/so to build directory
-cmake_policy(SET CMP0087 NEW)
-
-# include logic to build glsl files
-# include(cmake/glsl_compiler.cmake)
-
 # project and language to be used
-project(vulkan-framework
+project(wayland-window
 	LANGUAGES CXX
-	HOMEPAGE_URL "https://roy-fokker.github.io/vulkan-framework/"
+	HOMEPAGE_URL "https://roy-fokker.github.io/wayland-window/"
 	DESCRIPTION "C++23 based Project Template.")
 
 # Enable scan for dependencies
